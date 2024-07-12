@@ -20,7 +20,12 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->unsignedBigInteger('titulo_permissao_id');
+            $table->unsignedBigInteger('local_id');
             $table->timestamps();
+
+            $table->foreign('titulo_permissao_id')->references('id')->on('titulopermissao');
+            $table->foreign('local_id')->references('id')->on('local');
         });
     }
 
